@@ -21,5 +21,8 @@
 			<!-- 返回结果标记success但是当前action没有配置就去全局跳转视图去找 -->
 			<result name="{1}">/{1}.jsp</result>
 		</action>
+		
+		<action name="fileUpload"  class="com.situ.struts.upload.FileUploadAction">
+		</action>
 	</package>
 </struts>
