@@ -1,7 +1,7 @@
 package com.situ.struts.controller;
 
 import com.opensymphony.xwork2.ActionSupport;
-
+ 
 public class HelloController extends ActionSupport{
 
 	@Override

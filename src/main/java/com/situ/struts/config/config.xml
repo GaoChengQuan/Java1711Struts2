@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+  "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	
+	<package name="config" namespace="/config" extends="struts-default">
+		<!--配置全局跳转视图  -->
+		<global-results>
+			<result name="success">/success.jsp</result>
+		</global-results>
+		<action name="admin_*" class="com.situ.struts.config.AdminAction" method="{1}">
+			<!-- 返回结果标记success但是当前action没有配置就去全局跳转视图去找 -->
+			<result name="{1}">/{1}.jsp</result>
+		</action>
+	</package>
+</struts>

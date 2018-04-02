@@ -3,33 +3,22 @@
   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
   "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<!-- 
-	package:定义一个包，作用管理action，通常一个业务模块一个包。
-	name:包的名字，包名不能重复。
-	extends：当前包继承自哪个包，
-		在struts中包一定继承自struts-default。
-		struts-default在struts-default.xml中定义的包.
-	action:配置请求路径与Action类的映射关系。（请求映射）
-	 	name:请求路径的名字。
-	 	class:请求路径对应action类的全名
-	 	method:请求处理的方法.
-	result:结果映射
-		name:action处理方法的返回值。
-		type:跳转的方式
-		标签中跳转的页面
-	 -->
-<package name="xxx" extends="struts-default">
-	<action name="hello" class="com.situ.struts.controller.HelloController" method="execute">
-		<result name="success">/success.jsp</result>
-	</action>
-	<!-- <action name="add" class="com.situ.struts.controller.HelloController" method="add">
-		<result name="add">/add.jsp</result>
-	</action>
-	<action name="delete" class="com.situ.struts.controller.HelloController" method="delete">
-		<result name="delete">/delete.jsp</result>
-	</action> -->
-	<action name="hello_*" class="com.situ.struts.controller.HelloController" method="{1}">
-		<result name="{1}">/{1}.jsp</result>
-	</action>
-</package>
+	<include file="constant.xml"></include>
+	<include file="com/situ/struts/controller/hello.xml"></include>
+	<include file="com/situ/struts/config/config.xml"></include>
+	
+	<package name="xxx"  extends="struts-default">
+		<!--配置全局跳转视图  -->
+		<global-results>
+			<result name="success">/success.jsp</result>
+		</global-results>
+		<action name="user_*" class="com.situ.struts.controller.UserAction" method="{1}">
+			<!-- 返回结果标记success但是当前action没有配置就去全局跳转视图去找 -->
+			<result name="{1}">/{1}.jsp</result>
+		</action>
+		<action name="user2_*" class="com.situ.struts.controller.UserAction2" method="{1}">
+			<!-- 返回结果标记success但是当前action没有配置就去全局跳转视图去找 -->
+			<result name="{1}">/{1}.jsp</result>
+		</action>
+	</package>
 </struts>
