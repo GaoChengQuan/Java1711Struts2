@@ -6,6 +6,7 @@
 	<include file="constant.xml"></include>
 	<include file="com/situ/struts/controller/hello.xml"></include>
 	<include file="com/situ/struts/config/config.xml"></include>
+	<include file="com/situ/struts/data/data.xml"></include>
 	
 	<package name="xxx"  extends="struts-default">
 		<!--配置全局跳转视图  -->

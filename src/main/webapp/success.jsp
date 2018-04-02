@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Success
+	${request_data1}<br/>
+	${session_data1}<br/>
+	${application_data1}<br/>
+	<hr/>
+	${request_data2}<br/>
+	${session_data2}<br/>
+	${application_data2}<br/>
+	<hr/>
+	${request_data3}<br/>
+	${session_data3}<br/>
+	${application_data3}<br/>
 </body>
 </html>
