@@ -7,8 +7,23 @@
 	<include file="com/situ/struts/controller/hello.xml"></include>
 	<include file="com/situ/struts/config/config.xml"></include>
 	<include file="com/situ/struts/data/data.xml"></include>
+	<include file="com/situ/struts/login/login.xml"></include>
 	
 	<package name="xxx"  extends="struts-default">
+		<!-- 拦截器配置 -->
+		<interceptors>
+			<!-- 自定义拦截器 -->
+			<interceptor name="myInterceptor" class="com.situ.struts.interceptor.MyInterceptor"></interceptor>
+			<!-- 自定义拦截器栈 -->
+			<interceptor-stack name="myStack">
+				<!-- 引用默认拦截器栈 （一定要放在第一行）-->
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="myInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 装配拦截器（不自定义的话，使用的就是默认的defaultStack） -->
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+	
 		<!--配置全局跳转视图  -->
 		<global-results>
 			<result name="success">/success.jsp</result>
@@ -21,7 +36,6 @@
 			<!-- 返回结果标记success但是当前action没有配置就去全局跳转视图去找 -->
 			<result name="{1}">/{1}.jsp</result>
 		</action>
-		
 		<action name="fileUpload"  class="com.situ.struts.upload.FileUploadAction">
 		</action>
 	</package>

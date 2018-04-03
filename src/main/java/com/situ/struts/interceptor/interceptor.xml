@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+  "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<package name="interceptor" namespace="/"  extends="struts-default">
+		<!-- 拦截器配置 -->
+		<interceptors>
+			<!-- 自定义拦截器 -->
+			<interceptor name="myInterceptor" class="com.situ.struts.interceptor.MyInterceptor"></interceptor>
+			<!-- 自定义拦截器栈 -->
+			<interceptor-stack name="myStack">
+				<!-- 引用默认拦截器栈 （一定要放在第一行）-->
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="myInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 装配拦截器（不自定义的话，使用的就是默认的defaultStack） -->
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+	</package>
+</struts>
