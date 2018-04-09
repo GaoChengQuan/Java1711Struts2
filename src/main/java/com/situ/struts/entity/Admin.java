@@ -5,8 +5,16 @@ public class Admin {
 	private String name;
 	private String password;
 
-	public Admin(int id, String adminName, String adminPassword) {
+	public Admin() {
+		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Admin(Integer id, String name, String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.password = password;
 	}
 
 	public Integer getId() {

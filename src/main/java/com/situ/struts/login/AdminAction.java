@@ -25,6 +25,7 @@ public class AdminAction extends ActionSupport{
 		}
 		
 		//登录成功:数据保存到session
+		ActionContext actionContext = ActionContext.getContext();
 		ActionContext.getContext().getSession().put("admin", adminLogin);
 		//返回登录成功
 		return "loginSuccess";
